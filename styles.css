@@ -49,7 +49,7 @@ body {
 }
 
 .intro-topline, .intro-footer { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
-.church-mark { display: grid; place-items: center; width: 46px; height: 46px; border: 1.5px solid var(--ink); border-radius: 50%; font: 700 14px 'Space Grotesk', sans-serif; }
+.church-mark { display: grid; place-items: center;  solid var(--ink); font: 700 14px 'Space Grotesk', sans-serif; }
 .event-edition, .scroll-note { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .slash { margin: 0 8px; opacity: .45; }
 .intro-content { position: relative; z-index: 1; max-width: 680px; margin: auto 0; padding: 8vh 0; }

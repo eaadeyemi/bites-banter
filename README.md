@@ -1,2 +1,2 @@
-# fire-yaps
-Registration for Fire &amp; Yaps
+# bites-banter
+Registration for Bites &amp; Banter

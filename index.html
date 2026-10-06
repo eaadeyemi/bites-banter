@@ -3,34 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Register for Bites & Banter, a relationship event filled with food, real talk, and fellowship.">
-	<title>Bites &amp; Banter | Relationship</title>
+	<meta name="description" content="Join Bites & Banter for hot food, honest conversations, and good company. Register free for October 31, 2026.">
+	<meta name="theme-color" content="#0829a8">
+	<title>Bites &amp; Banter | Registration</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:wght@400;500;600;700;800&family=Lilita+One&family=Permanent+Marker&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<main class="event-shell">
 		<section class="intro-panel" aria-labelledby="event-title">
 			<div class="intro-topline">
-				<span class="church-mark" aria-hidden="true">Pentecost House Youth Fellowship</span>
+				<div class="church-mark" aria-label="Pentecost House Youth Fellowship">
+					<div class="church-logo"><img src="pentecost_logo_white%201.png" alt="Pentecost House"></div>
+					<div class="church-affiliation">YOUTH FELLOWSHIP</div>
+				</div>
 			</div>
 
 			<div class="intro-content">
-				<p class="eyebrow">A fireside chat</p>
-				<h1 id="event-title">Bites <span class="ampersand">&amp;</span><br>Banter<span class="period">.</span></h1>
-				<p class="intro-copy">An evening of good food, honest conversations, laughter, and meaningful connections. No pressure. No awkward formalities.
-<p class="intro-copy">Come for the bites. Stay for the banter.</p>
+				<h1 id="event-title"><img class="event-logo" src="B&amp;B_Logo.svg" alt="Bites &amp; Banter"></h1>
+				<p class="intro-copy">Good food, real talk, and the kind of company that makes you stay a little longer.</p>
 
 				<div class="event-details" aria-label="Event details">
 					<div class="detail-item">
-						<span class="detail-label">Theme</span>
-						<strong>Fostering & Nurturing Good Relationships</strong>
+						<span class="detail-label">When</span>
+						<strong>Saturday, October 31, 2026 · 4 PM</strong>
 					</div>
 					<div class="detail-item">
-						<span class="detail-label">Experience</span>
-						<strong>Food. Real Talk. Fellowship.</strong>
+						<span class="detail-label">Where</span>
+						<strong>Pentecost House · Outdoor Premises</strong>
+					</div>
+					<div class="detail-item">
+						<span class="detail-label">The theme</span>
+						<strong>Fostering &amp; nurturing good relationships</strong>
 					</div>
 				</div>
 			</div>
@@ -44,12 +50,11 @@
 		<section class="form-panel" aria-labelledby="register-title">
 			<div class="photo-frame">
 				<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="Friends sharing a warm moment together">
-				<div class="photo-caption"><span class="caption-dot"></span> Hot food, hotter conversations</div>
 			</div>
 
 			<div class="form-wrap">
 				<div class="form-heading">
-					<p class="eyebrow">Limited Spots</p>
+					<p class="eyebrow">Limited Spots Available</p>
 					<h2 id="register-title">Let’s make room<br>for you.</h2>
 					<p class="form-intro">Registration is free. Tell us who’s coming so we can welcome you well.</p>
 				</div>
@@ -69,7 +74,7 @@
 					<label for="phone">Phone number</label>
 					<input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="0800 000 0000" required>
 					<span class="field-error" id="phone-error" aria-live="polite"></span>
-					<button type="submit" id="submit-button">Register for free <span aria-hidden="true"></span></button>
+					<button type="submit" id="submit-button">Register for free</button>
 					<p class="privacy-note" id="form-status" role="status" aria-live="polite">Your details stay with our event team.</p>
 				</form>
 
@@ -77,7 +82,7 @@
 					<span class="success-icon" aria-hidden="true">✓</span>
 					<p class="eyebrow">You’re on the list</p>
 					<h2>See you at<br>Bites &amp; Banter.</h2>
-					<p class="success-copy">Thanks, <strong id="attendee-name">friend</strong>. Your free ticket is confirmed. We’ll send the event details to your inbox.</p>
+					<p class="success-copy">Thanks, <strong id="attendee-name">friend</strong>. Your free ticket is confirmed.</p>
 					<button class="secondary-button" type="button" id="register-another">Register someone else <span aria-hidden="true">↗</span></button>
 				</div>
 			</div>
@@ -86,6 +91,7 @@
 
 	<script>
 		const form = document.querySelector('#registration-form');
+		const formHeading = document.querySelector('.form-heading');
 		const successState = document.querySelector('#success-state');
 		const attendeeName = document.querySelector('#attendee-name');
 		const submitButton = document.querySelector('#submit-button');
@@ -120,6 +126,7 @@
 				if (!response.ok) throw new Error('Registration failed');
 				attendeeName.textContent = data.get('name').trim().split(' ')[0];
 				form.hidden = true;
+				formHeading.hidden = true;
 				successState.hidden = false;
 			} catch (error) {
 				submitButton.disabled = false;
@@ -135,6 +142,7 @@
 			submitButton.disabled = false;
 			submitButton.firstChild.textContent = 'Register for free ';
 			successState.hidden = true;
+			formHeading.hidden = false;
 			form.hidden = false;
 			document.querySelector('#name').focus();
 		});

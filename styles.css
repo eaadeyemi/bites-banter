@@ -189,7 +189,16 @@ body { min-height: 100%; overflow: hidden; }
 	font-size: clamp(72px, 9vw, 132px);
 	display: none;
 }
-.intro-panel::after { border-color: rgba(255,255,255,.2); box-shadow: 0 0 0 24px rgba(255,255,255,.035), 0 0 0 50px rgba(255,255,255,.025), 0 0 0 76px rgba(255,255,255,.018); }
+.intro-panel::after {
+	border-color: rgba(255,255,255,.2);
+	box-shadow: 0 0 0 24px rgba(255,255,255,.035), 0 0 0 50px rgba(255,255,255,.025), 0 0 0 76px rgba(255,255,255,.018);
+	animation: rings-pulse 7s ease-in-out infinite;
+	transform-origin: center;
+}
+@keyframes rings-pulse {
+	0%, 100% { transform: scale(1); opacity: .72; }
+	50% { transform: scale(1.055); opacity: 1; }
+}
 .church-mark { color: white; }
 .church-mark img { width: clamp(112px, 12vw, 160px); }
 .church-affiliation { color: rgba(255,255,255,.8); }

@@ -109,6 +109,10 @@ button span { float: right; font-size: 18px; line-height: 12px; }
 .success-copy strong { color: var(--ink); }
 .secondary-button { max-width: 250px; margin-top: 30px; background: var(--ink); color: var(--paper); }
 .secondary-button:hover { color: white; }
+.registration-closed h2 { color: #0829a8; font-family: 'Lilita One', 'DM Sans', sans-serif; font-size: clamp(38px, 3.2vw, 50px); font-weight: 400; line-height: 1.05; letter-spacing: 0; }
+.registration-contacts { display: grid; gap: 12px; margin: 26px 0 0; padding: 0; list-style: none; }
+.registration-contacts li { display: flex; flex-direction: column; gap: 5px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; background: white; font-size: 13px; }
+.registration-contacts a { color: #0829a8; font-weight: 700; text-underline-offset: 3px; }
 [hidden] { display: none !important; }
 @keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -241,6 +245,7 @@ h1 { font-size: clamp(76px, 10vw, 148px); text-transform: uppercase; }
 	background: var(--paper);
 	box-shadow: none;
 }
+.form-panel.is-registration-closed { justify-content: flex-start; }
 .form-wrap { width: min(100% - 64px, 490px); padding: clamp(30px, 4vh, 44px) 0 34px; }
 .form-heading .eyebrow { color: #1236b2; }
 .form-heading h2 { color: #0829a8; font-family: 'Lilita One', 'DM Sans', sans-serif; font-size: clamp(38px, 3.2vw, 50px); font-weight: 400; line-height: 1.05; letter-spacing: 0; }

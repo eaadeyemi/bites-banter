@@ -99,6 +99,16 @@
 					<p class="success-copy">Thanks, <strong id="attendee-name">friend</strong>. Your free ticket is confirmed.</p>
 					<button class="secondary-button" type="button" id="register-another">Register someone else <span aria-hidden="true">↗</span></button>
 				</div>
+
+				<div class="registration-closed" aria-labelledby="registration-closed-title" hidden>
+					<p class="eyebrow">Registration closed</p>
+					<h2 id="registration-closed-title">Slots are Filled</h2>
+					<p class="form-intro">Registrations are now closed. For more information, please reach out to the contacts below.</p>
+					<ul class="registration-contacts">
+						<li><strong>Opeyemi Oyelaran</strong><a href="tel:+2347067490199">+234 706 749 0199</a></li>
+						<li><strong>Adeyinka Adeyemi</strong><a href="tel:+2348130604767">+234 813 060 4767</a></li>
+					</ul>
+				</div>
 			</div>
 		</section>
 	</main>
@@ -180,6 +190,35 @@
 			form.hidden = false;
 			document.querySelector('#name').focus();
 		});
+	</script>
+
+	<script>
+		(() => {
+			const registrationClosesAt = new Date('2026-10-25T00:00:00+01:00').getTime();
+			function updateRegistrationAvailability() {
+				const isClosed = Date.now() >= registrationClosesAt;
+				document.querySelectorAll('.form-panel').forEach((panel) => {
+					panel.classList.toggle('is-registration-closed', isClosed);
+					panel.querySelector('.form-heading').hidden = isClosed;
+					panel.querySelector('form').hidden = isClosed;
+					panel.querySelector('.success-state').hidden = isClosed;
+					panel.querySelector('.registration-closed').hidden = !isClosed;
+				});
+			}
+			document.addEventListener('DOMContentLoaded', () => {
+				document.querySelectorAll('.form-panel form').forEach((form) => {
+					form.addEventListener('submit', (event) => {
+						if (Date.now() >= registrationClosesAt) {
+							event.preventDefault();
+							event.stopImmediatePropagation();
+							updateRegistrationAvailability();
+						}
+						}, true);
+				});
+				updateRegistrationAvailability();
+				if (Date.now() < registrationClosesAt) setTimeout(updateRegistrationAvailability, registrationClosesAt - Date.now());
+			});
+		})();
 	</script>
 </body>
 </html>
